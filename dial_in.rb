@@ -17,7 +17,6 @@ SerialPort.open(port_name, options) do |serial_port|
     puts "serial_port.#{p[0]} #{p[1]}"
     serial_port.send(*p)
   end
-
   puts "Ready?"
   gets.chomp
 
@@ -36,6 +35,11 @@ SerialPort.open(port_name, options) do |serial_port|
     serial_port.print(char)
     sleep 0.014
   end
-
-  puts "I NEED TO FINISH THIS!"
+  puts "Now run: "
+  # https://www.linuxquestions.org/questions
+  # /linux-kernel-70/slip-networking-problem-over-serial-line-4175500009/
+  #   sudo slattach -s 19200 -p slip -dL /dev/ttyUSB0 # USB-serial
+  #   sudo ifconfig sl0 10.0.0.1/24 up
+  #   sudo route add default gw 10.0.0.254 sl0
+  puts "slattach -s 9600 -p slip /dev/ttyUSB0"
 end

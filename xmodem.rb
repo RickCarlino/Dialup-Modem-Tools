@@ -5,7 +5,7 @@ require "pry"
 
 port_name   = ENV.fetch("PORT", "/dev/ttyUSB0")
 options     = {
-  baud:         9600,
+  baud:         ENV.fetch("BAUD", "9600").to_i,
   data_bits:    8,
   stop_bits:    1,
   parity:       SerialPort::NONE,
