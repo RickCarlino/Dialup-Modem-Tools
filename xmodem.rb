@@ -11,9 +11,11 @@ options     = {
   parity:       SerialPort::NONE,
   flow_control: SerialPort::HARD
 }
+
 SerialPort.open(port_name, options) do |serial_port|
   file        = File.new(ENV.fetch("FILE"),"rb")
-  puts "If you see 'SYSTEM OK' on the other end, you are properly configured."
+  puts "'SYSTEM OK' on distant end is a good thing."
+  puts "If you don't see that, your serial config is broke."
   serial_port.puts("SYSTEM OK")
   sleep 2
   XMODEM::send(serial_port, file)
